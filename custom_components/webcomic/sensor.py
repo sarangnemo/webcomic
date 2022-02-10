@@ -135,8 +135,11 @@ class ComicSensor(Entity):
 
         for post in data['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media']['edges']:
             image_src = post['node']['display_url']
+            caption = post['edge_media_to_caption']['edges'][0]['node']['text']
             self._state = "URL found"
-            return image_src
+            return caption
+"""            return image_src
+"""
                     
     def update(self):
         """Fetch new state data for the sensor.
